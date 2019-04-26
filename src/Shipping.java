@@ -76,7 +76,8 @@ public class Shipping {
             if (truck.getWeight() >= weightSum) {
                 weightSum += weight;
                 if (truck.getWeight() < weightSum){
-                    break;
+                    weightSum -= weight;
+                    continue;
                 }
                 priceSum += product.getPrice();
                 System.out.print(product.getName() + " ");
