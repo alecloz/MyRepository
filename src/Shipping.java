@@ -22,14 +22,14 @@ public class Shipping {
                 System.out.println("Требуется ввести числовое значение...");
                 continue;
             }
-            if (weight < 1000 || weight > 10000) {
+            if (weight < 100 || weight > 10000) {
                 System.out.println("В нашем парке нет машин с такой грузоподъемностью. Введите значение снова...");
             } else
                 break;
         }
         Truck truck = new Truck(weight);
         return truck;
-    }   //Создаем грузовик с указанной грузоподъемностью (от 1000 до 10000)
+    }   //Создаем грузовик с указанной грузоподъемностью (от 100 до 10000)
 
     public ArrayList<Product> productsList() {
 
