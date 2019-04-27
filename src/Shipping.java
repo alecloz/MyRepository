@@ -13,16 +13,17 @@ public class Shipping {
     public Truck selectWeightTruck() {
         int weight = 0;
         boolean TruckNotSelected = true;
-        Scanner scanner = new Scanner(System.in);
+
         while (TruckNotSelected) {
             try {
+                Scanner scanner = new Scanner(System.in);
                 weight = scanner.nextInt();
                 if (weight >= 100 && weight <= 10000) {
                     TruckNotSelected = false;
                 } else if (weight < 100) {
-                    throw new IllegalArgumentException("Слишком маленькая грузоподъемность авто...");
+                    System.out.println("Слишком маленькая грузоподъемность авто...");
                 } else if (weight > 10000) {
-                    throw new IllegalArgumentException("Слишком большая грузоподъемность авто...");
+                    System.out.println("Слишком большая грузоподъемность авто...");
                 }
             } catch (Exception e) {
                 System.out.println("Требуется ввести числовое значение...");
@@ -55,10 +56,10 @@ public class Shipping {
                 weight = Integer.parseInt(productsArray[1]);
             } catch (NumberFormatException e) {
                 System.out.println("Вес товара указан неправильно!");
-                System.exit(0);
+                //System.exit(0);
             } catch (Exception e) {
                 e.getStackTrace();
-                System.exit(0);
+                //System.exit(0);
             }
             try {
                 price = Integer.parseInt(productsArray[2]);
