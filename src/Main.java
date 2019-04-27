@@ -17,5 +17,6 @@ public class Main {
         Collections.reverse(products);
         int secondResult = shipping.transportationProducts(products, truck);
         shipping.compare(firstResult, secondResult);
+
     }
 }

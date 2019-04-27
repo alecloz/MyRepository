@@ -3,12 +3,12 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 
-public class Shipping {
+class Shipping {
 
     private ArrayList<ArrayList<String>> group = new ArrayList<>(2);
     private ArrayList<Integer> priceSumProducts = new ArrayList<>();
 
-    public Truck selectWeightTruck() {
+    Truck selectWeightTruck() {
         int weight = 0;
         boolean TruckNotSelected = true;
 
@@ -18,7 +18,7 @@ public class Shipping {
                 weight = scanner.nextInt();
                 if (weight >= 0) {
                     TruckNotSelected = false;
-                } else if (weight < 0) {
+                } else {
                     System.out.println("Грузоподъемность авто не может быть отрицательной...");
                 }
             } catch (Exception e) {
@@ -29,7 +29,7 @@ public class Shipping {
         return truck;
     }   //Создаем грузовик с указанной грузоподъемностью (от 100 до 10000)
 
-    public ArrayList<Product> productsList() {
+    ArrayList<Product> productsList() {
 
         String productsRead = "";
         ArrayList<Product> products = new ArrayList<>();
@@ -71,7 +71,7 @@ public class Shipping {
         return products;
     }   //Создаем ArrayList с объектами Product
 
-    public int transportationProducts(ArrayList<Product> products, Truck truck) {
+    int transportationProducts(ArrayList<Product> products, Truck truck) {
         ArrayList<String> list = new ArrayList<>();
         int weightSum = 0;
         int weight = 0;
@@ -93,7 +93,7 @@ public class Shipping {
         return priceSum;
     }
 
-    public void compare (int first, int second){
+    void compare(int first, int second){
         if(first > second) {
             for (String s : group.get(0)) {
                 System.out.print(s + " ");

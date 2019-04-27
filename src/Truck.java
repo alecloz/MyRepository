@@ -2,16 +2,16 @@
 public class Truck {
     private int weight;
 
-    public Truck(int weight) {
+    Truck(int weight) {
         if (weight >= 0){
             this.weight = weight;
         }
-        else if (weight < 0) {
+        else {
             throw new IllegalArgumentException("Грузоподъемность авто не может быть отрицательной...");
         }
     }
 
-    public int getWeight() {
+    int getWeight() {
         return weight;
     }
 
@@ -20,7 +20,7 @@ public class Truck {
         if (weight >= 0){
             this.weight = weight;
         }
-        else if (weight < 0) {
+        else {
             throw new IllegalArgumentException("Грузоподъемность авто не может быть отрицательной...");
         }
 

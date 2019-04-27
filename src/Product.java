@@ -56,11 +56,10 @@ public class Product implements Comparable<Product> {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Product{");
-        sb.append("name = ").append(name);
-        sb.append(", price = ").append(price);
-        sb.append(", weight = ").append(weight);
-        sb.append('}');
-        return sb.toString();
+        String sb = "Product{" + "name = " + name +
+                ", price = " + price +
+                ", weight = " + weight +
+                '}';
+        return sb;
     }
 }
