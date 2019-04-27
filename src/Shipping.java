@@ -63,7 +63,7 @@ public class Shipping {
             products.add(new Product(nameWeightPrice[0], weight, price));
         }
         return products;
-    }   //Создаем ArrayList с объектами Product
+    }
 
     public int truckFilling(ArrayList<Product> products, Truck truck) {
         ArrayList<String> list = new ArrayList<>();
