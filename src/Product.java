@@ -51,13 +51,7 @@ public class Product implements Comparable<Product> {
 
     @Override
     public int compareTo(Product otherPrice) {
-        if (this.price == otherPrice.price) {
-            return 0;
-        } else if (this.price < otherPrice.price) {
-            return -1;
-        } else {
-            return 1;
-        }
+        return Integer.compare(this.price, otherPrice.price);
     }
 
     @Override
