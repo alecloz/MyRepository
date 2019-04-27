@@ -3,21 +3,21 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 
-class Shipping {
+public class Shipping {
 
     private ArrayList<ArrayList<String>> group = new ArrayList<>(2);
     private ArrayList<Integer> priceSumProducts = new ArrayList<>();
 
-    Truck selectWeightTruck() {
+    public Truck selectWeightTruck() {
         int weight = 0;
-        boolean TruckNotSelected = true;
+        boolean truckNotSelected = true;
 
-        while (TruckNotSelected) {
+        while (truckNotSelected) {
             try {
                 Scanner scanner = new Scanner(System.in);
                 weight = scanner.nextInt();
                 if (weight >= 0) {
-                    TruckNotSelected = false;
+                    truckNotSelected = false;
                 } else {
                     System.out.println("Грузоподъемность авто не может быть отрицательной...");
                 }
@@ -29,27 +29,21 @@ class Shipping {
         return truck;
     }   //Создаем грузовик с указанной грузоподъемностью (от 100 до 10000)
 
-    ArrayList<Product> productsList() {
+    public ArrayList<Product> productsList() {
 
-        String productsRead = "";
+        String productsRead;
         ArrayList<Product> products = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
-        try {
-            productsRead = scanner.nextLine();
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.exit(0);
-        }
-
+        productsRead = scanner.nextLine();
         Pattern pattern = Pattern.compile("\\s");
-        String[] productsArray = pattern.split(productsRead);
+        String[] separateProducts = pattern.split(productsRead);
 
-        for (String s1 : productsArray) {
+        for (String s1 : separateProducts) {
             int weight = 0;
             int price = 0;
-            productsArray = s1.split("/");
+            String[] nameWeightPrice = s1.split("/");
             try {
-                weight = Integer.parseInt(productsArray[1]);
+                weight = Integer.parseInt(nameWeightPrice[1]);
             } catch (NumberFormatException e) {
                 System.out.println("Вес товара указан неправильно!");
                 System.exit(0);
@@ -58,7 +52,7 @@ class Shipping {
                 System.exit(0);
             }
             try {
-                price = Integer.parseInt(productsArray[2]);
+                price = Integer.parseInt(nameWeightPrice[2]);
             } catch (NumberFormatException e) {
                 System.out.println("Цена товара указана неправильно!");
                 System.exit(0);
@@ -66,12 +60,12 @@ class Shipping {
                 e.getStackTrace();
                 System.exit(0);
             }
-            products.add(new Product(productsArray[0], weight, price));
+            products.add(new Product(nameWeightPrice[0], weight, price));
         }
         return products;
     }   //Создаем ArrayList с объектами Product
 
-    int transportationProducts(ArrayList<Product> products, Truck truck) {
+    public int truckFilling(ArrayList<Product> products, Truck truck) {
         ArrayList<String> list = new ArrayList<>();
         int weightSum = 0;
         int weight = 0;
@@ -93,7 +87,7 @@ class Shipping {
         return priceSum;
     }
 
-    void compare(int first, int second){
+    public void compare (int first, int second){
         if(first > second) {
             for (String s : group.get(0)) {
                 System.out.print(s + " ");

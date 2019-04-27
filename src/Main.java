@@ -13,9 +13,9 @@ public class Main {
                 "пробел + следующий товар, после ввода последнего товара нажмите Enter...");
         ArrayList<Product> products = shipping.productsList();
         Collections.sort(products);
-        int firstResult = shipping.transportationProducts(products, truck);
+        int firstResult = shipping.truckFilling(products, truck);
         Collections.reverse(products);
-        int secondResult = shipping.transportationProducts(products, truck);
+        int secondResult = shipping.truckFilling(products, truck);
         shipping.compare(firstResult, secondResult);
 
     }

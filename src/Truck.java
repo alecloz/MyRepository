@@ -2,7 +2,7 @@
 public class Truck {
     private int weight;
 
-    Truck(int weight) {
+    public Truck(int weight) {
         if (weight >= 0){
             this.weight = weight;
         }
@@ -11,7 +11,7 @@ public class Truck {
         }
     }
 
-    int getWeight() {
+    public int getWeight() {
         return weight;
     }
 
