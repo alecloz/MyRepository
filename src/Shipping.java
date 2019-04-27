@@ -87,7 +87,7 @@ public class Shipping {
         return priceSum;
     }
 
-    public void compare (int first, int second){
+    public void compareTruckFilling(int first, int second){
         if(first > second) {
             for (String s : group.get(0)) {
                 System.out.print(s + " ");

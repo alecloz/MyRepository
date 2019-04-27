@@ -16,7 +16,7 @@ public class Main {
         int firstResult = shipping.truckFilling(products, truck);
         Collections.reverse(products);
         int secondResult = shipping.truckFilling(products, truck);
-        shipping.compare(firstResult, secondResult);
+        shipping.compareTruckFilling(firstResult, secondResult);
 
     }
 }
