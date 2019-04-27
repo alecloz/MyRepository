@@ -27,7 +27,7 @@ public class Shipping {
         }
         Truck truck = new Truck(weight);
         return truck;
-    }   //Создаем грузовик с указанной грузоподъемностью (от 100 до 10000)
+    }
 
     public ArrayList<Product> productsList() {
 
