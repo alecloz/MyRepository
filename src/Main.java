@@ -5,7 +5,7 @@ import java.util.Collections;
 public class Main {
 
     public static void main(String[] args) {
-
+        System.out.println("Test output");
         System.out.println("Введите грузоподъемность вашей машины...");
         Shipping shipping = new Shipping();
         Truck truck = shipping.selectWeightTruck();
