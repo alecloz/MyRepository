@@ -109,7 +109,7 @@ public class Shipping {
             for (String s : group.get(1)) {
                 System.out.print(s + " ");
             }
-            System.out.print(priceSumProducts.get(0));
+            System.out.print(priceSumProducts.get(1));
         }
     }
 }
