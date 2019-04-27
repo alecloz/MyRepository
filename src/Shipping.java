@@ -1,8 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -11,6 +7,8 @@ import java.util.regex.Pattern;
  */
 public class Shipping {
 
+    private ArrayList<ArrayList<String>> group = new ArrayList<>(2);
+    private ArrayList<Integer> priceSumProducts = new ArrayList<>();
 
     public Truck selectWeightTruck() {
         int weight = 0;
@@ -76,9 +74,10 @@ public class Shipping {
         return products;
     }   //Создаем ArrayList с объектами Product
 
-    public void transportationProducts(ArrayList<Product> products, Truck truck) {
+    public int transportationProducts(ArrayList<Product> products, Truck truck) {
+        ArrayList<String> list = new ArrayList<>();
         int weightSum = 0;
-        int weight;
+        int weight = 0;
         int priceSum = 0;
         for (Product product : products) {
             weight = product.getWeight();
@@ -89,10 +88,28 @@ public class Shipping {
                     continue;
                 }
                 priceSum += product.getPrice();
-                System.out.print(product.getName() + " ");
+                //System.out.print(product.getName() + " ");
+                list.add(product.getName());
             }
         }
-        System.out.print(priceSum + " ");
-    }   //заполняем грузовик товарами, в первую очередь дорогими
+        //System.out.print(priceSum + " ");
+        group.add(list);
+        priceSumProducts.add(priceSum);
+        return priceSum;
+    }
 
+    public void compare (int first, int second){
+        if(first > second) {
+            for (String s : group.get(0)) {
+                System.out.print(s + " ");
+            }
+            System.out.print(priceSumProducts.get(0));
+        }
+        else {
+            for (String s : group.get(1)) {
+                System.out.print(s + " ");
+            }
+            System.out.print(priceSumProducts.get(0));
+        }
+    }
 }

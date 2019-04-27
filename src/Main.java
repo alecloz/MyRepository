@@ -8,9 +8,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-        //Truck truck = new Truck(100000);
-
         System.out.println("Введите грузоподъемность вашей машины...");
         Shipping shipping = new Shipping();
         Truck truck = shipping.selectWeightTruck();
@@ -18,8 +15,9 @@ public class Main {
                 "пробел + следующий товар, после ввода последнего товара нажмите Enter...");
         ArrayList<Product> products = shipping.productsList();
         Collections.sort(products);
+        int firstResult = shipping.transportationProducts(products, truck);
         Collections.reverse(products);
-        shipping.transportationProducts(products, truck);
-
+        int secondResult = shipping.transportationProducts(products, truck);
+        shipping.compare(firstResult, secondResult);
     }
 }

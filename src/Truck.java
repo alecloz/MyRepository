@@ -31,6 +31,5 @@ public class Truck {
         else if (weight > 10000) {
             throw new IllegalArgumentException("Слишком большая грузоподъемность авто...");
         }
-
     }
 }
