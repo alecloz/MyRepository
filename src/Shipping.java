@@ -56,10 +56,10 @@ public class Shipping {
                 weight = Integer.parseInt(productsArray[1]);
             } catch (NumberFormatException e) {
                 System.out.println("Вес товара указан неправильно!");
-                //System.exit(0);
+                System.exit(0);
             } catch (Exception e) {
                 e.getStackTrace();
-                //System.exit(0);
+                System.exit(0);
             }
             try {
                 price = Integer.parseInt(productsArray[2]);
@@ -89,11 +89,9 @@ public class Shipping {
                     continue;
                 }
                 priceSum += product.getPrice();
-                //System.out.print(product.getName() + " ");
                 list.add(product.getName());
             }
         }
-        //System.out.print(priceSum + " ");
         group.add(list);
         priceSumProducts.add(priceSum);
         return priceSum;
