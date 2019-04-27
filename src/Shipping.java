@@ -2,9 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-/**
- * Created by Alexey Lozovoy 25.04.2019
- */
+
 public class Shipping {
 
     private ArrayList<ArrayList<String>> group = new ArrayList<>(2);
@@ -18,12 +16,10 @@ public class Shipping {
             try {
                 Scanner scanner = new Scanner(System.in);
                 weight = scanner.nextInt();
-                if (weight >= 100 && weight <= 10000) {
+                if (weight >= 0) {
                     TruckNotSelected = false;
-                } else if (weight < 100) {
-                    System.out.println("Слишком маленькая грузоподъемность авто...");
-                } else if (weight > 10000) {
-                    System.out.println("Слишком большая грузоподъемность авто...");
+                } else if (weight < 0) {
+                    System.out.println("Грузоподъемность авто не может быть отрицательной...");
                 }
             } catch (Exception e) {
                 System.out.println("Требуется ввести числовое значение...");

@@ -1,6 +1,4 @@
-/**
- * Created by Alexey Lozovoy 25.04.2019
- */
+
 public class Product implements Comparable<Product> {
     private String name;
     private int weight;
@@ -8,16 +6,16 @@ public class Product implements Comparable<Product> {
 
     public Product(String name, int weight, int price) {
         this.name = name;
-        if (weight > 0 && weight < 10000) {
+        if (weight > 0) {
             this.weight = weight;
         }
         else
-        throw new IllegalArgumentException("Вес товара должен быть больше нуля и меньше 10_000 кг...");
-        if (price > 0) {
+        throw new IllegalArgumentException("Вес товара должен быть больше нуля...");
+        if (price >= 0) {
             this.price = price;
         }
         else
-            throw new IllegalArgumentException("Цена должна быть больше нуля...");
+            throw new IllegalArgumentException("Цена товара не может быть отрицательной...");
     }
 
     public void setName(String name) {
@@ -25,18 +23,18 @@ public class Product implements Comparable<Product> {
     }
 
     public void setPrice(int price) {
-        if (price > 0)
+        if (price >= 0)
             this.price = price;
         else
-            throw new IllegalArgumentException("Цена должна быть больше нуля...");
+            throw new IllegalArgumentException("Цена товара не может быть отрицательной...");
     }
 
     public void setWeight(int weight) {
-        if (weight > 0 && weight < 10000){
+        if (weight > 0){
             this.weight = weight;
         }
         else
-            throw new IllegalArgumentException("Вес товара должен быть больше нуля и меньше 10_000 кг...");
+            throw new IllegalArgumentException("Вес товара должен быть больше нуля...");
     }
 
     public String getName() {

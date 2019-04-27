@@ -1,18 +1,13 @@
-/**
- * Created by Alexey Lozovoy 25.04.2019
- */
+
 public class Truck {
     private int weight;
 
     public Truck(int weight) {
-        if (weight >= 100 && weight <= 10000){
+        if (weight >= 0){
             this.weight = weight;
         }
-        else if (weight < 100) {
-            throw new IllegalArgumentException("Слишком маленькая грузоподъемность авто...");
-        }
-        else if (weight > 10000) {
-            throw new IllegalArgumentException("Слишком большая грузоподъемность авто...");
+        else if (weight < 0) {
+            throw new IllegalArgumentException("Грузоподъемность авто не может быть отрицательной...");
         }
     }
 
@@ -22,14 +17,12 @@ public class Truck {
 
     public void setWeight(int weight) {
 
-        if (weight >= 100 && weight <= 10000){
+        if (weight >= 0){
             this.weight = weight;
         }
-        else if (weight < 100) {
-            throw new IllegalArgumentException("Слишком маленькая грузоподъемность авто...");
+        else if (weight < 0) {
+            throw new IllegalArgumentException("Грузоподъемность авто не может быть отрицательной...");
         }
-        else if (weight > 10000) {
-            throw new IllegalArgumentException("Слишком большая грузоподъемность авто...");
-        }
+
     }
 }
