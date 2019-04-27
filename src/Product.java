@@ -8,32 +8,35 @@ public class Product implements Comparable<Product> {
 
     public Product(String name, int weight, int price) {
         this.name = name;
-        this.weight = weight;
-        this.price = price;
+        if (weight > 0 && weight < 10000) {
+            this.weight = weight;
+        }
+        else
+        throw new IllegalArgumentException("Вес товара должен быть больше нуля и меньше 10_000 кг...");
+        if (price > 0) {
+            this.price = price;
+        }
+        else
+            throw new IllegalArgumentException("Цена должна быть больше нуля...");
     }
 
     public void setName(String name) {
-        int checkName;
-        if (name.length() <= 1) {
-            System.out.println("Имя товара состоит больше чем с одной буквы...");
-            return;
-        }
-        try {
-            checkName = Integer.parseInt(name);
-            System.out.println("Имя товара не может состоять из цифр...");
-        } catch (Exception e) {
             this.name = name;
-        }
     }
 
     public void setPrice(int price) {
         if (price > 0)
             this.price = price;
+        else
+            throw new IllegalArgumentException("Цена должна быть больше нуля...");
     }
 
     public void setWeight(int weight) {
-        if (weight > 0 && weight < 10000)
+        if (weight > 0 && weight < 10000){
             this.weight = weight;
+        }
+        else
+            throw new IllegalArgumentException("Вес товара должен быть больше нуля и меньше 10_000 кг...");
     }
 
     public String getName() {

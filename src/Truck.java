@@ -5,7 +5,15 @@ public class Truck {
     private int weight;
 
     public Truck(int weight) {
-        this.weight = weight;
+        if (weight >= 100 && weight <= 10000){
+            this.weight = weight;
+        }
+        else if (weight < 100) {
+            throw new IllegalArgumentException("Слишком маленькая грузоподъемность авто...");
+        }
+        else if (weight > 10000) {
+            throw new IllegalArgumentException("Слишком большая грузоподъемность авто...");
+        }
     }
 
     public int getWeight() {
@@ -13,7 +21,16 @@ public class Truck {
     }
 
     public void setWeight(int weight) {
-        if (weight >= 1000 && weight <= 10000)
+
+        if (weight >= 100 && weight <= 10000){
             this.weight = weight;
+        }
+        else if (weight < 100) {
+            throw new IllegalArgumentException("Слишком маленькая грузоподъемность авто...");
+        }
+        else if (weight > 10000) {
+            throw new IllegalArgumentException("Слишком большая грузоподъемность авто...");
+        }
+
     }
 }

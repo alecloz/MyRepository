@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
@@ -11,21 +12,23 @@ import java.util.regex.Pattern;
 public class Shipping {
 
 
-    public Truck shippingProduct() {
+    public Truck selectWeightTruck() {
         int weight = 0;
-        boolean yesNo = true;
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        while (yesNo) {
+        boolean TruckNotSelected = true;
+        Scanner scanner = new Scanner(System.in);
+        while (TruckNotSelected) {
             try {
-                weight = Integer.parseInt(reader.readLine());
+                weight = scanner.nextInt();
+                if (weight >= 100 && weight <= 10000) {
+                    TruckNotSelected = false;
+                } else if (weight < 100) {
+                    throw new IllegalArgumentException("Слишком маленькая грузоподъемность авто...");
+                } else if (weight > 10000) {
+                    throw new IllegalArgumentException("Слишком большая грузоподъемность авто...");
+                }
             } catch (Exception e) {
                 System.out.println("Требуется ввести числовое значение...");
-                continue;
             }
-            if (weight < 100 || weight > 10000) {
-                System.out.println("В нашем парке нет машин с такой грузоподъемностью. Введите значение снова...");
-            } else
-                break;
         }
         Truck truck = new Truck(weight);
         return truck;
@@ -34,33 +37,39 @@ public class Shipping {
     public ArrayList<Product> productsList() {
 
         String productsRead = "";
-        int weight;
-        int price;
         ArrayList<Product> products = new ArrayList<>();
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        Scanner scanner = new Scanner(System.in);
         try {
-            productsRead = bufferedReader.readLine();
+            productsRead = scanner.nextLine();
         } catch (Exception e) {
             e.printStackTrace();
+            System.exit(0);
         }
 
         Pattern pattern = Pattern.compile("\\s");
         String[] productsArray = pattern.split(productsRead);
 
         for (String s1 : productsArray) {
-
+            int weight = 0;
+            int price = 0;
             productsArray = s1.split("/");
             try {
                 weight = Integer.parseInt(productsArray[1]);
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Вес товара указан неправильно!");
-                break;
+                System.exit(0);
+            } catch (Exception e) {
+                e.getStackTrace();
+                System.exit(0);
             }
             try {
                 price = Integer.parseInt(productsArray[2]);
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Цена товара указана неправильно!");
-                break;
+                System.exit(0);
+            } catch (Exception e) {
+                e.getStackTrace();
+                System.exit(0);
             }
             products.add(new Product(productsArray[0], weight, price));
         }
@@ -69,13 +78,13 @@ public class Shipping {
 
     public void transportationProducts(ArrayList<Product> products, Truck truck) {
         int weightSum = 0;
-        int weight = 0;
+        int weight;
         int priceSum = 0;
         for (Product product : products) {
             weight = product.getWeight();
             if (truck.getWeight() >= weightSum) {
                 weightSum += weight;
-                if (truck.getWeight() < weightSum){
+                if (truck.getWeight() < weightSum) {
                     weightSum -= weight;
                     continue;
                 }
